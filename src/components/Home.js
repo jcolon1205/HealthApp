@@ -1,4 +1,5 @@
 //COmmenting out to test the member list page
+//This is the home page
 import React from 'react';
 import './Home.css';
 
