@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MemberList.css';
 
 function MemberList() {
@@ -43,22 +43,7 @@ function MemberList() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === 'name') {
-      // Allow only alphabetic characters
-      const alphaValue = value.replace(/[^a-zA-Z\s]/g, '');
-      setSearchParams(prev => ({ ...prev, [name]: alphaValue }));
-    } else if (name === 'phoneNumber') {
-      // Allow only numeric characters and auto-format as XXX-XXX-XXXX
-      const numericValue = value.replace(/\D/g, '').slice(0, 10); // Limit to 10 digits
-      const formattedValue = numericValue
-        .replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')
-        .replace(/(\d{3})(\d{3})/, '$1-$2')
-        .replace(/(\d{3})/, '$1');
-      setSearchParams(prev => ({ ...prev, [name]: formattedValue }));
-    } else {
-      setSearchParams(prev => ({ ...prev, [name]: value }));
-    }
+    setSearchParams(prev => ({ ...prev, [name]: value }));
   };
 
   const handleMemberClick = (memberId) => {
@@ -70,35 +55,37 @@ function MemberList() {
     <div className="member-list">
       <h1>Member Search</h1>
       <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          name="name"
-          value={searchParams.name}
-          onChange={handleInputChange}
-          placeholder="Name"
-        />
-        <input
-          type="date"
-          name="dob"
-          value={searchParams.dob}
-          onChange={handleInputChange}
-          placeholder="Date of Birth"
-        />
-        <input
-          type="text"
-          name="memberId"
-          value={searchParams.memberId}
-          onChange={handleInputChange}
-          placeholder="Member ID"
-        />
-        <input
-          type="tel"
-          name="phoneNumber"
-          value={searchParams.phoneNumber}
-          onChange={handleInputChange}
-          placeholder="Phone Number"
-        />
-        <button type="submit">Search</button>
+        <div className="input-group">
+          <input
+            type="text"
+            name="name"
+            value={searchParams.name}
+            onChange={handleInputChange}
+            placeholder="Name"
+          />
+          <input
+            type="date"
+            name="dob"
+            value={searchParams.dob}
+            onChange={handleInputChange}
+            placeholder="Date of Birth"
+          />
+          <input
+            type="text"
+            name="memberId"
+            value={searchParams.memberId}
+            onChange={handleInputChange}
+            placeholder="Member ID"
+          />
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={searchParams.phoneNumber}
+            onChange={handleInputChange}
+            placeholder="Phone Number"
+          />
+        </div>
+        <button type="submit" className="search-button">Search</button>
       </form>
 
       {loading && <div>Loading...</div>}
@@ -119,7 +106,7 @@ function MemberList() {
               {members.map((member) => (
                 <tr key={member.id} onClick={() => handleMemberClick(member.id)}>
                   <td>{member.id}</td>
-                  <td>{`${member.first_name} ${member.last_name}`}</td>
+                  <td className="member-name">{`${member.first_name} ${member.last_name}`}</td>
                   <td>{new Date(member.date_of_birth).toLocaleDateString()}</td>
                   <td>{member.phone_number}</td>
                 </tr>

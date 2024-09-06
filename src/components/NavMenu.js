@@ -31,10 +31,8 @@ function NavMenu() {
 
   return (
     <div className="nav-menu" ref={dropdownRef}>
-      <button onClick={toggleMenu} className="hamburger-menu">
-        <span className="hamburger-line"></span>
-        <span className="hamburger-line"></span>
-        <span className="hamburger-line"></span>
+      <button onClick={toggleMenu} className="dropdown-toggle">
+        Menu
       </button>
       {isOpen && (
         <div className="menu-dropdown">

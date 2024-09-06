@@ -1,26 +1,38 @@
-.home {
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: #f0f4f8; /* Light blue-gray background */
-  color: #333;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .content {
   text-align: center;
-  padding: 20px;
-  max-width: 800px;
+  color: white;
+  padding: 2rem;
+  z-index: 1;
 }
 
-.home h1 {
-  margin-bottom: 20px;
-  color: #2c3e50; /* Dark blue-gray color for the heading */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.home p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  color: #34495e; /* Slightly lighter color for the paragraph */
+p {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
