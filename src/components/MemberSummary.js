@@ -17,7 +17,7 @@ function MemberSummary() {
     const fetchMember = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5000/api/members/${memberId}`, {
+        const response = await fetch(`http://localhost:5001/api/members/${memberId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

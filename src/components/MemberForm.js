@@ -55,7 +55,7 @@ function MemberForm() {
   const checkDuplicate = async () => {
     try {
       console.log('Checking for duplicate...'); // Debug log
-      const response = await fetch('http://localhost:5000/api/members/check-duplicate', {
+      const response = await fetch('http://localhost:5001/api/members/check-duplicate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
